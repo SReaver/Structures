@@ -40,10 +40,10 @@ namespace Structures
                 item.sotrudnikInfo();
             }
 
-            foreach (var item in LS)
-            {
-
-            }
+            List<Sotrudnik> Mangers= LS.Where(w => w.role == "Manager").ToList();
+            List<Sotrudnik> Klerks = LS.Where(w => w.role == "Klerk").ToList();
+            var temp =Mangers.Sum(s=>s.salary)/(Klerks.Sum(s=>s.salary)/ Klerks.Count());
+            List<Sotrudnik> ManZarplats = Mangers.Where(W => W.salary >= temp).ToList();
 
         }
     }
