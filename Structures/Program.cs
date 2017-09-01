@@ -6,17 +6,30 @@ using System.Threading.Tasks;
 
 namespace Structures
 {
-    class Program
+    public class Vacancies
+    {
+
+    }
+    public struct Employee
+    {
+        string name;
+        Vacancies vac;
+        int salary;
+        int[] priemData; //вот тут непонятно как по заданию просят создать поле типа int[3], он выдаёт ошибку если указывать размер
+    }
+
+      class Program
     {
        
        
         static void Main(string[] args)
         {
+            #region
             Console.Write("Сколько будет сотрудников: ");
             int ans = Int32.Parse(Console.ReadLine());
             List<Sotrudnik> LS = new List<Sotrudnik>();
             for (int i = 1; i <= ans; i++)
-              {
+            {
                 Sotrudnik s = new Sotrudnik();
                 Console.Write("Введите имя сотрудника: ");
                 s.name = Console.ReadLine();
@@ -25,7 +38,7 @@ namespace Structures
                 s.role = (roles)Enum.Parse(typeof(roles), srole.ToString());
                 Console.Write("Введите зарплату сотрудника: ");
 
-                double tDouble=0;
+                double tDouble = 0;
                 double.TryParse(Console.ReadLine(), out tDouble);
                 s.salary = tDouble;
                 Console.Write("Введите дату устройства сотрудника: ");
@@ -52,11 +65,18 @@ namespace Structures
             Console.WriteLine("Все сотрудники, принятые на работу позже босса");
 
             var b = LS.FirstOrDefault(w => w.role == roles.Boss);
-            foreach (var item in LS.Where(w=>w.role!=b.role && w.dateCome>b.dateCome))
+            foreach (var item in LS.Where(w => w.role != b.role && w.dateCome > b.dateCome))
             {
 
                 item.sotrudnikInfo();
             }
+            #endregion
+            Cat cat = new Cat();
+            cat.EatSomething((int)eda.Курица);
+            cat.EatSomething((int)eda.Колбаса);
+            Console.WriteLine(cat.hungryLevel);
+
+            Console.ReadLine();
         }
     }
 }
